@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#18251f">
-  <meta name="description" content="A historical campaign map prototype for the American Revolutionary War.">
+  <meta name="description" content="A playable American Revolution real-time strategy campaign prototype.">
   <title>Liberty's Cause — American Revolution RTS</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -12,28 +12,33 @@
   <main id="game-shell">
     <header class="topbar">
       <a class="wordmark" href="#" aria-label="Liberty's Cause home"><span class="wordmark-star">✦</span> LIBERTY'S CAUSE</a>
-      <div class="campaign-heading"><span class="eyebrow">THE AMERICAN REVOLUTION</span><strong>Campaign · 1775</strong></div>
-      <div class="campaign-stats"><span><i class="dot blue"></i> <b id="american-count">—</b> Continental troops</span><span><i class="dot red"></i> <b id="british-count">—</b> British troops</span></div>
-      <button id="history-button" class="quiet-button" type="button">About this prototype</button>
+      <div class="campaign-heading"><span class="eyebrow">THE AMERICAN REVOLUTION</span><strong id="year-label">Campaign · 1775</strong></div>
+      <div class="campaign-stats">
+        <span><i class="dot blue"></i><b id="american-count">—</b> Continental</span>
+        <span><i class="dot red"></i><b id="british-count">—</b> British</span>
+        <span class="money-stat">£<b id="money-count">—</b></span>
+      </div>
+      <button id="history-button" class="quiet-button" type="button">Washington &amp; history</button>
     </header>
     <section class="game-layout" aria-label="Campaign game">
       <section class="map-wrap" aria-label="Campaign map">
-        <div class="map-caption"><span class="eyebrow">THE THIRTEEN COLONIES</span><span>Choose a settlement to inspect its garrison</span></div>
-        <canvas id="game-canvas" aria-label="Interactive campaign map of the eastern American colonies"></canvas>
-        <div class="map-legend"><span><i class="dot blue"></i> Continental</span><span><i class="dot red"></i> Crown</span><span><i class="army-key">◆</i> Travelling force</span></div>
+        <div class="map-caption"><span class="eyebrow" id="map-title">THE THIRTEEN COLONIES</span><span id="map-help">Select a settlement to inspect it · choose a city, then dispatch a force</span></div>
+        <canvas id="game-canvas" aria-label="Interactive campaign map and tactical battlefield"></canvas>
+        <div class="map-legend" id="map-legend"><span><i class="dot blue"></i> Continental</span><span><i class="dot red"></i> Crown</span><span><i class="army-key">◆</i> Travelling force</span></div>
         <div id="toast" class="toast" role="status" aria-live="polite"></div>
       </section>
       <aside id="city-panel" class="side-panel" aria-live="polite"></aside>
     </section>
-    <footer class="footer"><span>Prototype · Phase 1: campaign map, territory and army movement</span><span>Historical outcomes are not simulated yet</span></footer>
+    <footer class="footer"><span>Prototype · campaign, local recruitment, transfers &amp; real-time battles</span><span>Map is a simplified campaign illustration, not a historical survey</span></footer>
   </main>
   <dialog id="about-dialog" class="about-dialog">
     <form method="dialog"><button class="dialog-close" aria-label="Close">×</button></form>
-    <span class="eyebrow">DEVELOPMENT NOTE</span>
-    <h2>A new campaign begins</h2>
-    <p>This is the first playable foundation, built from scratch with browser-native HTML, CSS, JavaScript and Canvas. No game engine or external assets are needed, so it is quick to run and straightforward to expand.</p>
-    <p>Every settlement owns its own garrison. Transfers remove troops from the origin while they travel and add them to the destination only on arrival—there is no shared soldier pool. Enemy-held towns with defenders cannot yet be assaulted; tactical battles are a later development phase.</p>
-    <p class="history-note"><strong>Historical note:</strong> The starting map is a simplified, fictionalized campaign setup for playtesting, not a precise representation of control in 1775.</p>
+    <span class="eyebrow">HISTORY &amp; GAMEPLAY</span>
+    <h2>George Washington and the Revolution</h2>
+    <p>George Washington (1732–1799) served as commander-in-chief of the Continental Army from 1775. His leadership helped hold the revolutionary cause together through difficult campaigns, including the winter at Valley Forge, and the allied victory at Yorktown in 1781. He later became the first U.S. president.</p>
+    <p>Washington was also a slaveholder. His life and the Revolution's language of liberty existed in contradiction with the enslavement of people. This game should present that history honestly, not as an uncomplicated celebration.</p>
+    <p class="history-note"><strong>Prototype note:</strong> The campaign map and starting forces are simplified for play. This prototype currently includes recruiting, city transfers, unoccupied captures, and simple real-time battles; the broader historical campaign, events, upgrades, French allies, and detailed battle objectives remain future work.</p>
   </dialog>
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>

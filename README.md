@@ -1,38 +1,46 @@
 # Liberty's Cause — American Revolution RTS
 
-A from-scratch browser game prototype about the American Revolutionary War. It uses native HTML, CSS, JavaScript modules, and Canvas: there is no engine installation or external asset dependency. This keeps the project easy to run, inspect, and expand, and makes a lightweight web release straightforward.
+A browser-based, from-scratch real-time strategy prototype made with HTML, CSS, JavaScript modules, and Canvas. It has no engine installation or external assets. The game is intentionally built in playable increments rather than claiming the entire historical RTS brief is already complete.
 
-## Run locally
+## Play locally
 
-Open `index.html` in a modern browser, or serve the project folder (recommended for JavaScript modules):
+Run a local static server from the project directory (recommended for browser JavaScript modules):
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Then visit <http://localhost:8080>.
+Open <http://localhost:8080> in a modern desktop browser.
 
-## Phase 1: playable foundation
+## Current playable features
 
-- Stylized campaign map with thirteen settlements, roads, rivers, faction colors, and local garrison counts.
-- Click a city to inspect its owner and its independent, class-by-class roster.
-- Send a chosen number of a unit class between American-controlled cities. Units leave the source garrison immediately, travel visibly, and join the destination garrison on arrival.
-- Dispatch all stationed troops from an American city to an unoccupied British settlement; they travel on the map and occupy it when they arrive.
-- Troops in another city or in transit do not automatically join a garrison. A force aimed at a defended enemy city is not launched; tactical battles are not implemented yet.
-- Campaign totals are derived from local rosters and travelling forces; there is no recruitable or stationed global soldier pool.
+- Thirteen-settlement campaign map with faction ownership, roads, rivers, local garrison counts, and travelling armies.
+- Click a city to view its own roster. Garrisoned soldiers are never held in a shared recruitable pool.
+- Recruit only from American-controlled cities. Recruitment costs money, takes time, and completes into that city's own garrison subject to local capacity.
+- Send a chosen class and number of soldiers between friendly cities. They leave the source garrison while travelling and join the destination only on arrival.
+- Select an American city, then click a British settlement on the map to dispatch all stationed troops. Ungarrisoned settlements are occupied on arrival; defended settlements start a real-time tactical encounter.
+- In tactical battles, select soldiers individually or with a drag box; right-click to move. Soldiers automatically seek and fire on nearby enemies. Casualties are removed from the correct roster; surviving attackers capture the town or return to origin after defeat/retreat.
+- American-controlled settlements generate shared campaign income over time. Captures award a one-time purse.
+- Washington/history panel includes contextual historical information and notes about the limitations of the simplified map.
 
-The initial map is a simplified, fictionalized setup for gameplay and is not an exact historical depiction of 1775 territorial control. The prototype does not yet include recruitment, income simulation, tactical combat, upgrades, or campaign progression; those belong to later phases.
+## Controls
 
-## Project structure
+- **Campaign:** click a settlement; use the right panel to recruit or transfer troops. To attack, select a Continental city, then click a Crown city on the map.
+- **Battle:** left-click a soldier to select; left-drag to select a group; right-click to move selected soldiers. Units attack automatically in range. Use the right-panel buttons for formations, hold, and retreat.
 
-- `index.html`, `styles.css` — accessible game shell and responsive interface.
-- `src/main.js` — rendering, interaction, travel and campaign state updates.
-- `src/campaign.js` — settlement and road data.
-- `src/models.js` — independent city garrisons and travelling forces.
-- `src/config.js` — factions and unit definitions.
-- `src/gameRules.js` — roster operations and validation helpers.
-- `src/battle.js` — explicit Phase 1 placeholder; no battle is claimed to be implemented.
+## Render deployment
 
-## Render
+Create a **Static Site**. Leave the build command empty and set the publish directory to `.` (repository root).
 
-For this static browser prototype, create a **Static Site** in Render. Use the repository root as the publish directory. No build command is required. If deploying as a Web Service instead, serve the static files with a small web server; do not use a Node app start command for this no-build project.
+## Structure
+
+- `index.html`, `styles.css` — interface and responsive layout.
+- `src/main.js` — campaign loop, canvas rendering, recruitment, movement, battle simulation, UI.
+- `src/campaign.js` — city/road data.
+- `src/models.js` — city garrisons and travelling armies.
+- `src/config.js` — faction and unit stats.
+- `src/gameRules.js` — roster operations.
+
+## Not implemented yet
+
+The full brief remains larger than this prototype: historical mission scripting and event chain, enemy strategic AI/counterattacks, French allies, supply/food effects, city upgrades, save/load, detailed city-specific battle maps, advanced formations/terrain modifiers, multiple objectives, sound, and extensive testing/balancing are future work. The initial map's ownership and positions are fictionalized for gameplay and should not be read as a precise historical map.

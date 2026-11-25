@@ -1,14 +1,12 @@
-export const FACTIONS = Object.freeze({
-  AMERICAN: "American",
-  BRITISH: "British",
-});
+export const FACTIONS = Object.freeze({ AMERICAN: 'American', BRITISH: 'British' });
 
+// Unit definitions are data only in Phase 1; recruitment/combat arrive in later phases.
 export const UNIT_TYPES = Object.freeze({
-  INFANTRY: "Continental Infantry",
-  RIFLEMEN: "Riflemen",
-  MILITIA: "Militia",
-  ARTILLERY: "Artillery",
-  CAVALRY: "Cavalry",
+  INFANTRY: 'Continental Infantry',
+  RIFLEMEN: 'Riflemen',
+  MILITIA: 'Militia',
+  ARTILLERY: 'Artillery',
+  CAVALRY: 'Cavalry',
 });
 
 export const UNIT_STATS = Object.freeze({
@@ -18,7 +16,3 @@ export const UNIT_STATS = Object.freeze({
   [UNIT_TYPES.ARTILLERY]: { cost: 90, health: 140, damage: 28, speed: 35, range: 55 },
   [UNIT_TYPES.CAVALRY]: { cost: 70, health: 120, damage: 16, speed: 95, range: 14 },
 });
-
-export function emptyRoster() {
-  return Object.fromEntries(Object.keys(UNIT_TYPES).map(() => ["", 0]));
-}

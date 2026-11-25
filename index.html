@@ -3,15 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>American Revolution RTS</title>
+  <meta name="theme-color" content="#18251f">
+  <meta name="description" content="A historical campaign map prototype for the American Revolutionary War.">
+  <title>Liberty's Cause — American Revolution RTS</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <main id="game-shell">
-    <canvas id="game-canvas" aria-label="American Revolution campaign map"></canvas>
-    <div id="top-bar"></div>
-    <aside id="city-panel"></aside>
+    <header class="topbar">
+      <a class="wordmark" href="#" aria-label="Liberty's Cause home"><span class="wordmark-star">✦</span> LIBERTY'S CAUSE</a>
+      <div class="campaign-heading"><span class="eyebrow">THE AMERICAN REVOLUTION</span><strong>Campaign · 1775</strong></div>
+      <div class="campaign-stats"><span><i class="dot blue"></i> <b id="american-count">—</b> Continental troops</span><span><i class="dot red"></i> <b id="british-count">—</b> British troops</span></div>
+      <button id="history-button" class="quiet-button" type="button">About this prototype</button>
+    </header>
+    <section class="game-layout" aria-label="Campaign game">
+      <section class="map-wrap" aria-label="Campaign map">
+        <div class="map-caption"><span class="eyebrow">THE THIRTEEN COLONIES</span><span>Choose a settlement to inspect its garrison</span></div>
+        <canvas id="game-canvas" aria-label="Interactive campaign map of the eastern American colonies"></canvas>
+        <div class="map-legend"><span><i class="dot blue"></i> Continental</span><span><i class="dot red"></i> Crown</span><span><i class="army-key">◆</i> Travelling force</span></div>
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      </section>
+      <aside id="city-panel" class="side-panel" aria-live="polite"></aside>
+    </section>
+    <footer class="footer"><span>Prototype · Phase 1: campaign map, territory and army movement</span><span>Historical outcomes are not simulated yet</span></footer>
   </main>
-  <script type="module" src="src/main.js"></script>
+  <dialog id="about-dialog" class="about-dialog">
+    <form method="dialog"><button class="dialog-close" aria-label="Close">×</button></form>
+    <span class="eyebrow">DEVELOPMENT NOTE</span>
+    <h2>A new campaign begins</h2>
+    <p>This is the first playable foundation, built from scratch with browser-native HTML, CSS, JavaScript and Canvas. No game engine or external assets are needed, so it is quick to run and straightforward to expand.</p>
+    <p>Every settlement owns its own garrison. Transfers remove troops from the origin while they travel and add them to the destination only on arrival—there is no shared soldier pool. Enemy-held towns with defenders cannot yet be assaulted; tactical battles are a later development phase.</p>
+    <p class="history-note"><strong>Historical note:</strong> The starting map is a simplified, fictionalized campaign setup for playtesting, not a precise representation of control in 1775.</p>
+  </dialog>
 </body>
 </html>
